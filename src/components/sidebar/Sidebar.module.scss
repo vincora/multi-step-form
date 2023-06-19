@@ -1,13 +1,13 @@
 .sidebar{
-    flex: 0 1 20%;
     background-image: url('../../images/bg-sidebar-desktop.svg');
     background-size: cover;
     border-radius: .5em;
+    height: 34em;
     padding: 2em;
-    height: 31.5em;
 }
 .item{
     display: flex;
+    align-items: center;
     gap: .8em;
     text-transform: uppercase;
     color: #fff;
@@ -21,12 +21,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5em;
+    padding: 1em;
     text-transform: uppercase;
 }
 .itemTitle{
     font-weight: 700;
+    font-size: 1em;
 }
 .itemSubTitle{
     color:hsl(229, 24%, 87%);
+    font-size: 0.75em;
 }
