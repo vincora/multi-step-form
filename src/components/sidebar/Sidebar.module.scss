@@ -1,0 +1,32 @@
+.sidebar{
+    flex: 0 1 20%;
+    background-image: url('../../images/bg-sidebar-desktop.svg');
+    background-size: cover;
+    border-radius: .5em;
+    padding: 2em;
+    height: 31.5em;
+}
+.item{
+    display: flex;
+    gap: .5em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 2em;
+}
+.itemNumber{
+    border-radius: 50%;
+    border: 1px solid #fff;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    text-transform: uppercase;
+}
+.itemTitle{
+    font-weight: 700;
+}
+.itemSubTitle{
+    color:hsl(229, 24%, 87%);
+}

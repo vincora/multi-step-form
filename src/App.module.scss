@@ -1,0 +1,15 @@
+
+.layoutWrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(217, 100%, 97%);
+}
+.layout{
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 1em;
+    display: flex;
+    gap: 5em;
+}
