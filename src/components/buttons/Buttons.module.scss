@@ -1,21 +1,21 @@
-.buttons{
-    display: flex;
-justify-content: space-between;
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }
-.nextBtn{
-    border: none;
-    border-radius: .5em;
-    padding: 1em 2em;
-    background-color: hsl(213, 96%, 18%);
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
+.nextBtn {
+  border: none;
+  border-radius: 0.5em;
+  padding: 1em 2em;
+  background-color: hsl(213, 96%, 18%);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
 }
-.previousBtn{
-    border: none;
-    padding: 1em 2em 1em 0;
-    background-color: transparent;
-    color: hsl(231, 11%, 63%);
-    font-weight: 700;
-    cursor: pointer;
+.backBtn {
+  border: none;
+  padding: 1em 2em 1em 0;
+  background-color: transparent;
+  color: hsl(231, 11%, 63%);
+  font-weight: 700;
+  cursor: pointer;
 }

@@ -36,7 +36,7 @@ function App() {
                   <Step1 />
                 </div>
                 <div className={style.buttons}>
-                  <Buttons forward />
+                  <Buttons noBackBtn />
                 </div>
               </>
             )}

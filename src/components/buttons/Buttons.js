@@ -1,10 +1,12 @@
 import React from "react";
-import style from './Buttons.module.scss';
+import style from "./Buttons.module.scss";
 
-const Buttons = () => {
+const Buttons = ({ noBackBtn }) => {
   return (
     <div className={style.buttons}>
-      <button className={style.previousBtn}>Go Back</button>
+      <div>
+        {!noBackBtn && <button className={style.backBtn}>Go Back</button>}
+      </div>
       <button className={style.nextBtn}>Next Step</button>
     </div>
   );
