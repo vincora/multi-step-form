@@ -29,14 +29,30 @@ function App() {
                 <div className={style.header}>
                   <Header
                     title="Personal info"
-                    description=" Please provide your name, email address, and phone number."
+                    description="Please provide your name, email address, and phone number."
                   />
                 </div>
                 <div className={style.content}>
                   <Step1 />
                 </div>
                 <div className={style.buttons}>
-                  <Buttons noBackBtn />
+                  <Buttons noBackBtn setStep={setStep} step={step}/>
+                </div>
+              </>
+            )}
+            {step === 2 && (
+              <>
+                <div className={style.header}>
+                  <Header
+                    title="Select your plan"
+                    description="You have the option of monthly or yearly billing."
+                  />
+                </div>
+                <div className={style.content}>
+                  <Step1 />
+                </div>
+                <div className={style.buttons}>
+                  <Buttons setStep={setStep}/>
                 </div>
               </>
             )}

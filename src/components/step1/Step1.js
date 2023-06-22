@@ -12,7 +12,7 @@ const Step1 = () => {
     <ul className={style.list}>
         {inputs.map(({ label, placeholder }) => {
           return (
-            <li className={style.list__item}>
+            <li className={style.list__item} key={label}>
               <Input label={label} placeholder={placeholder} />
             </li>
           );
