@@ -1,3 +1,21 @@
 .plansList{
-    
+    display: flex;
+    justify-content: space-between;
+}
+.plan{
+    &__img{
+
+    }
+    &__description{
+
+    }
+    &__title{
+
+    }
+    &__price{
+
+    }
+    &__discount{
+
+    }
 }

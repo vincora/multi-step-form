@@ -13,23 +13,24 @@
     text-transform: uppercase;
     color: #fff;
     margin-bottom: 2em;
-}
-.itemNumber{
-    border-radius: 50%;
-    border: 1px solid #fff;
-    width: 1em;
-    height: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
-    text-transform: uppercase;
-}
-.itemTitle{
-    font-weight: 700;
-    font-size: 1em;
-}
-.itemSubTitle{
-    color:hsl(229, 24%, 87%);
-    font-size: 0.75em;
+    &__number{
+        border-radius: 50%;
+        border: 1px solid #fff;
+        width: 1em;
+        height: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+    }
+    &__title{
+        font-weight: 700;
+        font-size: .85em;
+
+    }
+    &__subtitle{
+        color:hsl(229, 24%, 87%);
+        font-size: 0.75em;
+        margin-bottom: .25em;
+    }
 }

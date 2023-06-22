@@ -26,36 +26,37 @@ function App() {
             className={style.layout__form}
           >
             {step === 1 && (
-              <>
-                <div className={style.header}>
-                  <Header
-                    title="Personal info"
-                    description="Please provide your name, email address, and phone number."
-                  />
-                </div>
-                <div className={style.content}>
+              <div className={style.main}>
+                <div className={style.main__content}>
+                  <div className={style.main__header}>
+                    <Header
+                      title="Personal info"
+                      description="Please provide your name, email address, and phone number."
+                    />
+                  </div>
+
                   <Step1 />
                 </div>
-                <div className={style.buttons}>
-                  <Buttons noBackBtn setStep={setStep} step={step}/>
+                <div className={style.main__buttons}>
+                  <Buttons noBackBtn setStep={setStep} step={step} />
                 </div>
-              </>
+              </div>
             )}
             {step === 2 && (
-              <>
-                <div className={style.header}>
-                  <Header
-                    title="Select your plan"
-                    description="You have the option of monthly or yearly billing."
-                  />
-                </div>
-                <div className={style.content}>
+              <div className={style.main}>
+                <div className={style.main__content}>
+                  <div className={style.main__header}>
+                    <Header
+                      title="Select your plan"
+                      description="You have the option of monthly or yearly billing."
+                    />
+                  </div>
                   <Step2 />
                 </div>
-                <div className={style.buttons}>
-                  <Buttons setStep={setStep}/>
+                <div className={style.main__buttons}>
+                  <Buttons setStep={setStep} />
                 </div>
-              </>
+              </div>
             )}
           </form>
         </main>

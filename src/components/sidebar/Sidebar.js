@@ -10,10 +10,10 @@ const Sidebar = () => {
         {titles.map((item, number) => {
           return (
             <li className={style.item} key={item}>
-              <div className={style.itemNumber}>{number+1}</div>
-              <div className={style.itemInfo}>
-                <div className={style.itemSubTitle}>Step {number+1}</div>
-                <div className={style.itemTitle}>{item}</div>
+              <div className={style.item__number}>{number+1}</div>
+              <div className={style.item__info}>
+                <div className={style.item__subtitle}>Step {number+1}</div>
+                <div className={style.item__title}>{item}</div>
               </div>
             </li>
           );
