@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Sidebar from "./components/sidebar/Sidebar";
 import Step1 from "./components/step1/Step1";
+import Step2 from "./components/step2/Step2";
 import Header from "./components/header/Header";
 import Buttons from "./components/buttons/Buttons";
 
@@ -49,7 +50,7 @@ function App() {
                   />
                 </div>
                 <div className={style.content}>
-                  <Step1 />
+                  <Step2 />
                 </div>
                 <div className={style.buttons}>
                   <Buttons setStep={setStep}/>
