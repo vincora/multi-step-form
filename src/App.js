@@ -11,7 +11,7 @@ function App() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
 
   return (
     <div className={style.layoutWrapper}>

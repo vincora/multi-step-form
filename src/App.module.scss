@@ -10,7 +10,7 @@
     background-color: #fff;
     border-radius: 1em;
     display: flex;
-    max-width: 930px;
+    max-width: 950px;
     width: 100%;
 
     &__sidebar{
@@ -18,7 +18,7 @@
         flex-shrink: 0;
     }
     &__main{
-        padding: 3em 5em 2em 5em;
+        padding: 3em 6em 2em 6em;
         width: 100%;
     }
     &__form{
