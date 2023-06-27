@@ -17,7 +17,7 @@ function App() {
     <div className={style.layoutWrapper}>
       <div className={style.layout}>
         <div className={style.layout__sidebar}>
-          <Sidebar />
+          <Sidebar step={step}/>
         </div>
         <main className={style.layout__main}>
           <h1 hidden>Multi step form</h1>
@@ -34,7 +34,6 @@ function App() {
                       description="Please provide your name, email address, and phone number."
                     />
                   </div>
-
                   <Step1 />
                 </div>
                 <div className={style.main__buttons}>
