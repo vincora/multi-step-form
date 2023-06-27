@@ -5,59 +5,86 @@ import advancedIcon from "../../images/icon-advanced.svg";
 import proIcon from "../../images/icon-pro.svg";
 import cn from "classnames";
 
+const Plan = ({
+  plan,
+  term,
+  planText,
+  icon,
+  priceMonth,
+  priceYear,
+  onClick,
+}) => {
+  return (
+    <li
+      className={cn(style.plan, { [style.plan_active]: plan === planText })}
+      onClick={onClick}
+    >
+      <div className={style.plan__img}>
+        <img src={icon} alt="" />
+      </div>
+      <div className={style.plan__description}>
+        <div className={style.plan__title}>{planText}</div>
+        <div className={style.plan__price}>
+          {!term ? `$${priceMonth}/mo` : `$${priceYear}/yr`}
+        </div>
+        <div
+          className={cn(style.plan__discount, {
+            [style.plan__discount_visible]: term,
+          })}
+        >
+          2 months free
+        </div>
+      </div>
+    </li>
+  );
+};
+
 const Step2 = () => {
   const [term, setTerm] = useState(false);
-  const [plan, setPlan] = useState('arcade');
+  const [plan, setPlan] = useState("Arcade");
 
   return (
     <div>
       <ul className={style.plansList}>
-        <li className={cn(style.plan, {[style.plan_active]: plan === 'arcade'})} onClick={() => setPlan('arcade')}>
-          <div className={style.plan__img}>
-            <img src={arcadeIcon} alt="" />
-          </div>
-          <div className={style.plan__description}>
-            <div className={style.plan__title}>Arcade</div>
-            <div className={style.plan__price}>{!term ? '$9/mo' : "$90/yr"}</div>
-            <div className={cn(style.plan__discount, {[style.plan__discount_visible]: term})}>2 months free</div>
-          </div>
-        </li>
-        <li className={cn(style.plan, {[style.plan_active]: plan === 'advanced'})} onClick={() => setPlan('advanced')}>
-          <div className={style.plan__img}>
-            <img src={advancedIcon} alt="" />
-          </div>
-          <div className={style.plan__description}>
-            <div className={style.plan__title}>Advanced</div>
-            <div className={style.plan__price}>{!term ? '$12/mo' : "$120/yr"}</div>
-            <div className={cn(style.plan__discount, {[style.plan__discount_visible]: term})}>2 months free</div>
-          </div>
-        </li>
-        <li className={cn(style.plan, {[style.plan_active]: plan === 'pro'})} onClick={() => setPlan('pro')}>
-          <div className={style.plan__img}>
-            <img src={proIcon} alt="" />
-          </div>
-          <div className={style.plan__description}>
-            <div className={style.plan__title}>Pro</div>
-            <div className={style.plan__price}>{!term ? '$15/mo' : "$150/yr"}</div>
-            <div className={cn(style.plan__discount, {[style.plan__discount_visible]: term})}>2 months free</div>
-          </div>
-        </li>
+        <Plan
+          plan={plan}
+          term={term}
+          planText="Arcade"
+          icon={arcadeIcon}
+          priceMonth={9}
+          priceYear={90}
+          onClick={() => setPlan("Arcade")}
+        />
+        <Plan
+          plan={plan}
+          term={term}
+          planText="Advanced"
+          icon={advancedIcon}
+          priceMonth={12}
+          priceYear={120}
+          onClick={() => setPlan("Advanced")}
+        />
+        <Plan
+          plan={plan}
+          term={term}
+          planText="Pro"
+          icon={proIcon}
+          priceMonth={15}
+          priceYear={150}
+          onClick={() => setPlan("Pro")}
+        />
       </ul>
       <div className={style.term}>
-        <div>
-          Monthly
-        </div>
+        <div>Monthly</div>
         <label className={style.term__switch}>
           <input
             type="checkbox"
             className={style.term__checkbox}
-            onChange={() => setTerm(term => !term)}
+            onChange={() => setTerm((term) => !term)}
           />
           <span className={style.term__slider}></span>
         </label>
-        <div>
-          Yearly
-        </div>
+        <div>Yearly</div>
       </div>
     </div>
   );
