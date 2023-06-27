@@ -9,11 +9,17 @@
     border: 1px solid hsl(229, 24%, 87%);
     border-radius: .5em;
     width: 100%;
-    height: 10em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    &:hover{
+        border-color: hsl(243, 100%, 62%);
+    }
+    &_active{
+        background-color: hsl(231, 100%, 99%);
+        border-color: hsl(243, 100%, 62%);
+    }
     &__img{
         width: 40px;
         height: 40px;
@@ -21,8 +27,13 @@
             width: 100%;
         }
     }
+    &__description{
+        padding-top: 3em;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
     &__title{
-        margin-bottom: .2em;
         font-weight: 500;
         color: hsl(213, 96%, 18%);
     }
@@ -32,6 +43,12 @@
     }
     &__discount{
         display: none;
+        &_visible{
+            display: block;
+            color: hsl(213, 96%, 18%);
+            font-size: .75em;
+            font-weight: 500;
+        }
     }
 }
 .term{
