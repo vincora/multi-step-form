@@ -2,17 +2,20 @@
   display: flex;
   justify-content: space-between;
 }
-.nextBtn {
+.button{
   border: none;
   border-radius: 0.5em;
   padding: 1em 2em;
-  background-color: hsl(213, 96%, 18%);
+  width: 9em;
   color: #fff;
   font-weight: 600;
   font-size: 1em;
   cursor: pointer;
+  &:hover{
+    opacity: 85%;
+  }
 }
-.backBtn {
+.backButton {
   border: none;
   padding: 1em 2em 1em 0;
   background-color: transparent;
@@ -20,4 +23,10 @@
   font-weight: 700;
   font-size: 1em;
   cursor: pointer;
+}
+.nextButton {
+  background-color: hsl(213, 96%, 18%);
+}
+.confirm{
+  background-color: hsl(243, 100%, 62%);
 }

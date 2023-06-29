@@ -1,26 +1,35 @@
 import React from "react";
 import style from "./Buttons.module.scss";
+import cn from "classnames";
 
-const Buttons = ({ noBackBtn, setStep}) => {
+const Buttons = ({ noBackBtn, confirm, setStep }) => {
   const incrementStep = () => {
-    setStep((step) => step + 1);
+    setStep((prev) => prev + 1);
   };
   const decrementStep = () => {
-    setStep((step) => step - 1);
+    setStep((prev) => prev - 1);
   };
 
   return (
     <div className={style.buttons}>
       <div>
         {!noBackBtn && (
-          <button className={style.backBtn} onClick={decrementStep}>
+          <button className={style.backButton} onClick={decrementStep}>
             Go Back
           </button>
         )}
       </div>
-      <button className={style.nextBtn} onClick={incrementStep}>
-        Next Step
-      </button>
+      {(!confirm && (
+        <button
+          className={cn(style.button, style.nextButton)}
+          onClick={incrementStep}
+        >
+          Next Step
+        </button>
+      )) ||
+        (confirm && (
+          <button className={cn(style.button, style.confirm)} type="submit">Confirm</button>
+        ))}
     </div>
   );
 };

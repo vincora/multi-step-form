@@ -7,12 +7,13 @@ import Buttons from "./components/buttons/Buttons";
 import Step1 from "./components/step1/Step1";
 import Step2 from "./components/step2/Step2";
 import Step3 from "./components/step3/Step3";
+import Step4 from "./components/Step4/Step4";
 
 function App() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
 
   return (
     <div className={style.layoutWrapper}>
@@ -38,7 +39,7 @@ function App() {
                   <Step1 />
                 </div>
                 <div className={style.main__buttons}>
-                  <Buttons noBackBtn setStep={setStep} step={step} />
+                  <Buttons noBackBtn setStep={setStep}/>
                 </div>
               </div>
             )}
@@ -71,6 +72,22 @@ function App() {
               </div>
               <div className={style.main__buttons}>
                 <Buttons setStep={setStep} />
+              </div>
+            </div>
+            )}
+            {step === 4 && (
+              <div className={style.main}>
+              <div className={style.main__content}>
+                <div className={style.main__header}>
+                  <Header
+                    title="Finishing up"
+                    description="Double-check everything looks OK before confirming."
+                  />
+                </div>
+                <Step4/>
+              </div>
+              <div className={style.main__buttons}>
+                <Buttons setStep={setStep} confirm/>
               </div>
             </div>
             )}
