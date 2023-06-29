@@ -2,16 +2,17 @@ import style from "./App.module.scss";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Sidebar from "./components/sidebar/Sidebar";
-import Step1 from "./components/step1/Step1";
-import Step2 from "./components/step2/Step2";
 import Header from "./components/header/Header";
 import Buttons from "./components/buttons/Buttons";
+import Step1 from "./components/step1/Step1";
+import Step2 from "./components/step2/Step2";
+import Step3 from "./components/step3/Step3";
 
 function App() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(3);
 
   return (
     <div className={style.layoutWrapper}>
@@ -56,6 +57,22 @@ function App() {
                   <Buttons setStep={setStep} />
                 </div>
               </div>
+            )}
+            {step === 3 && (
+              <div className={style.main}>
+              <div className={style.main__content}>
+                <div className={style.main__header}>
+                  <Header
+                    title="Pick add-ons"
+                    description="Add-ons help enhance your gaming experience."
+                  />
+                </div>
+                <Step3 />
+              </div>
+              <div className={style.main__buttons}>
+                <Buttons setStep={setStep} />
+              </div>
+            </div>
             )}
           </form>
         </main>
