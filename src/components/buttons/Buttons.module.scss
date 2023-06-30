@@ -23,6 +23,9 @@
   font-weight: 700;
   font-size: 1em;
   cursor: pointer;
+  &:hover{
+    color: hsl(213, 96%, 18%);
+  }
 }
 .nextButton {
   background-color: hsl(213, 96%, 18%);

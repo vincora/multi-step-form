@@ -1,5 +1,5 @@
 import style from "./App.module.scss";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
 import Sidebar from "./components/sidebar/Sidebar";
 import Header from "./components/header/Header";
@@ -10,88 +10,120 @@ import Step3 from "./components/step3/Step3";
 import Step4 from "./components/Step4/Step4";
 
 function App() {
-  const { register, handleSubmit } = useForm();
+  const methods = useForm({
+    defaultValues:{
+      plan: "Arcade",
+      yearly: false 
+    }
+  });
   const onSubmit = (data) => console.log(data);
 
   const [step, setStep] = useState(1);
+
+  const incrementStep = async () => {
+    const result = await methods.trigger(["name", "email", "phone"]);
+    console.log({ result });
+    if (result) {
+      setStep((prev) => prev + 1);
+    }
+  };
+  const decrementStep = () => {
+    setStep((prev) => prev - 1);
+  };
 
   return (
     <div className={style.layoutWrapper}>
       <div className={style.layout}>
         <div className={style.layout__sidebar}>
-          <Sidebar step={step}/>
+          <Sidebar step={step} />
         </div>
         <main className={style.layout__main}>
           <h1 hidden>Multi step form</h1>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className={style.layout__form}
-          >
-            {step === 1 && (
-              <div className={style.main}>
-                <div className={style.main__content}>
-                  <div className={style.main__header}>
-                    <Header
-                      title="Personal info"
-                      description="Please provide your name, email address, and phone number."
+          <FormProvider {...methods}>
+            <form
+              onSubmit={methods.handleSubmit(onSubmit)}
+              className={style.layout__form}
+            >
+              {step === 1 && (
+                <div className={style.main}>
+                  <div className={style.main__content}>
+                    <div className={style.main__header}>
+                      <Header
+                        title="Personal info"
+                        description="Please provide your name, email address, and phone number."
+                      />
+                    </div>
+                    <Step1 />
+                  </div>
+                  <div className={style.main__buttons}>
+                    <Buttons
+                      noBackBtn
+                      incrementStep={incrementStep}
+                      decrementStep={decrementStep}
                     />
                   </div>
-                  <Step1 />
                 </div>
-                <div className={style.main__buttons}>
-                  <Buttons noBackBtn setStep={setStep}/>
-                </div>
-              </div>
-            )}
-            {step === 2 && (
-              <div className={style.main}>
-                <div className={style.main__content}>
-                  <div className={style.main__header}>
-                    <Header
-                      title="Select your plan"
-                      description="You have the option of monthly or yearly billing."
+              )}
+              {step === 2 && (
+                <div className={style.main}>
+                  <div className={style.main__content}>
+                    <div className={style.main__header}>
+                      <Header
+                        title="Select your plan"
+                        description="You have the option of monthly or yearly billing."
+                      />
+                    </div>
+                    <Step2 />
+                  </div>
+                  <div className={style.main__buttons}>
+                    <Buttons
+                      incrementStep={incrementStep}
+                      decrementStep={decrementStep}
                     />
                   </div>
-                  <Step2 />
                 </div>
-                <div className={style.main__buttons}>
-                  <Buttons setStep={setStep} />
+              )}
+              {step === 3 && (
+                <div className={style.main}>
+                  <div className={style.main__content}>
+                    <div className={style.main__header}>
+                      <Header
+                        title="Pick add-ons"
+                        description="Add-ons help enhance your gaming experience."
+                      />
+                    </div>
+                    <Step3 />
+                  </div>
+                  <div className={style.main__buttons}>
+                    <Buttons
+                      incrementStep={incrementStep}
+                      decrementStep={decrementStep}
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
-            {step === 3 && (
-              <div className={style.main}>
-              <div className={style.main__content}>
-                <div className={style.main__header}>
-                  <Header
-                    title="Pick add-ons"
-                    description="Add-ons help enhance your gaming experience."
-                  />
+              )}
+              {step === 4 && (
+                <div className={style.main}>
+                  <div className={style.main__content}>
+                    <div className={style.main__header}>
+                      <Header
+                        title="Finishing up"
+                        description="Double-check everything looks OK before confirming."
+                      />
+                    </div>
+                    <Step4 />
+                  </div>
+                  <div className={style.main__buttons}>
+                    <Buttons
+                      incrementStep={incrementStep}
+                      decrementStep={decrementStep}
+                      confirm
+                    />
+                  </div>
                 </div>
-                <Step3 />
-              </div>
-              <div className={style.main__buttons}>
-                <Buttons setStep={setStep} />
-              </div>
-            </div>
-            )}
-            {step === 4 && (
-              <div className={style.main}>
-              <div className={style.main__content}>
-                <div className={style.main__header}>
-                  <Header
-                    title="Finishing up"
-                    description="Double-check everything looks OK before confirming."
-                  />
-                </div>
-                <Step4/>
-              </div>
-              <div className={style.main__buttons}>
-                <Buttons setStep={setStep} confirm/>
-              </div>
-            </div>
-            )}
-          </form>
+              )}
+            </form>
+          </FormProvider>
         </main>
       </div>
     </div>

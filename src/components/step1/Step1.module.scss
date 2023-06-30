@@ -1,7 +1,8 @@
 .list{
     &__item{
+        font-size: .85em;
         & + &{
-            margin-top: 1em;
+            margin-top: 1.5em;
         }
     }
 }
@@ -12,5 +13,23 @@
     border-radius: .5em;
     border: 1px solid hsl(229, 24%, 87%);
     width: 100%;
-  }
+    &_error{
+        border: 1px solid hsl(354, 84%, 57%);
+    }
+    &:focus-visible{
+        border: 1px solid hsl(243, 100%, 62%);
+        outline: none;
+    }
+    &:hover{
+        border: 1px solid hsl(243, 100%, 62%);
+    }
+    &__label{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__errorMessage{
+        color: hsl(354, 84%, 57%);
+        font-weight: 500;
+    }
+}
   

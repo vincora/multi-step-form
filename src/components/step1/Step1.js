@@ -1,36 +1,54 @@
 import React from "react";
 import style from "./Step1.module.scss";
+import { useFormContext } from "react-hook-form";
+import cn from "classnames";
 
 const Step1 = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   return (
     <ul className={style.list}>
       <li className={style.list__item}>
         <label>
-          Name
+          <div className={style.input__label}>
+            <p>Name</p>
+            <p className={style.input__errorMessage}>{errors.name?.message}</p>
+          </div>
           <input
             type="text"
             placeholder="e.g. Stephen King"
-            className={style.input}
+            className={cn(style.input, {[style.input_error]: errors.name})}
+            {...register("name", { required: "This field is required" })}
           />
         </label>
       </li>
       <li className={style.list__item}>
         <label>
-          Email Address
+          <div className={style.input__label}>
+            <p>Email Address</p>
+            <p className={style.input__errorMessage}>{errors.email?.message}</p>
+          </div>
           <input
             type="text"
             placeholder="e.g. stephenking@lorem.com"
-            className={style.input}
+            className={cn(style.input, {[style.input_error]: errors.name})}
+            {...register("email", { required: "This field is required" })}
           />
         </label>
       </li>
       <li className={style.list__item}>
         <label>
-          Phone Number
+          <div className={style.input__label}>
+            <p>Phone Number</p>
+            <p className={style.input__errorMessage}>{errors.phone?.message}</p>
+          </div>
           <input
             type="text"
             placeholder="e.g. +1 234 567 890"
-            className={style.input}
+            className={cn(style.input, {[style.input_error]: errors.name})}
+            {...register("phone", { required: "This field is required" })}
           />
         </label>
       </li>
