@@ -6,7 +6,7 @@ import cn from "classnames";
 const Step1 = () => {
   const {
     register,
-    formState: { errors, touchedFields },
+    formState: { errors, touchedFields, isDirty },
   } = useFormContext();
   return (
     <ul className={style.list}>
@@ -19,8 +19,14 @@ const Step1 = () => {
           <input
             type="text"
             placeholder="e.g. Stephen King"
-            className={cn(style.input, {[style.input_error]: touchedFields.name && errors.name})}
-            {...register("name", { required: "This field is required" })}
+            className={cn(style.input, {
+              [style.input_error]: touchedFields.name && errors.name,
+            })}
+            {...register("name", { required: "This field is required",
+            minLength: {
+              value: 3,
+              message: 'Should have at least 3 symbols'
+            } })}
           />
         </label>
       </li>
@@ -33,8 +39,13 @@ const Step1 = () => {
           <input
             type="text"
             placeholder="e.g. stephenking@lorem.com"
-            className={cn(style.input, {[style.input_error]: touchedFields.email && errors.email})}
-            {...register("email", { required: "This field is required" })}
+            className={cn(style.input, {
+              [style.input_error]: touchedFields.email && errors.email,
+            })}
+            {...register("email", { required: "This field is required", pattern : {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: 'Invalid email'
+            } })}
           />
         </label>
       </li>
@@ -47,8 +58,18 @@ const Step1 = () => {
           <input
             type="text"
             placeholder="e.g. +1 234 567 890"
-            className={cn(style.input, {[style.input_error]: touchedFields.phone && errors.phone})}
-            {...register("phone", { required: "This field is required" })}
+            className={cn(style.input, {
+              [style.input_error]: touchedFields.phone && errors.phone || isDirty.phone && errors.phone,
+            })}
+            {...register("phone", {
+              required: "This field is required",
+              validate: {
+                digitsOnly: v => {
+                  if(v.replace(/[^\d]/g, '').length < 9)
+                  return 'Invalid'
+                } 
+              },
+            })}
           />
         </label>
       </li>
