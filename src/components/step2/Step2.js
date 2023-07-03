@@ -1,4 +1,3 @@
-
 import style from "./Step2.module.scss";
 import arcadeIcon from "../../images/icon-arcade.svg";
 import advancedIcon from "../../images/icon-advanced.svg";
@@ -6,12 +5,13 @@ import proIcon from "../../images/icon-pro.svg";
 import cn from "classnames";
 import { useFormContext, useWatch } from "react-hook-form";
 
-const Plan = ({ yearly, icon, priceMonth, priceYear, value, name }) => {
+const Plan = ({ icon, priceMonth, priceYear, value, name }) => {
   const { getValues, register, control } = useFormContext();
   useWatch({
     control,
-    name: name
+    name: [name, "yearly"]
   });
+  const yearly = getValues('yearly');
 
   return (
     <label
@@ -47,15 +47,13 @@ const plans = [
 ];
 
 const Step2 = () => {
-  const { register, getValues } = useFormContext();
-  useWatch({
-    name: 'yearly'
-  })
+  const { register } = useFormContext();
+
 
   return (
     <div>
       <ul className={style.plansList}>
-        {plans.map(({ icon, priceMonth, priceYear, value, yearly }) => {
+        {plans.map(({ icon, priceMonth, priceYear, value }) => {
           return (
             <li className={style.plan__wrapper} key={value}>
               <Plan
@@ -64,7 +62,6 @@ const Step2 = () => {
                 priceYear={priceYear}
                 value={value}
                 name="plan"
-                yearly={getValues("yearly")}
               />
             </li>
           );
@@ -74,9 +71,9 @@ const Step2 = () => {
         <div>Monthly</div>
         <label className={style.term__switch}>
           <input
+            {...register("yearly")}
             type="checkbox"
             className={style.term__checkbox}
-            {...register("yearly")}
           />
           <span className={style.term__slider}></span>
         </label>
