@@ -14,7 +14,8 @@ function App() {
     defaultValues:{
       plan: "Arcade",
       yearly: false 
-    }
+    },
+    mode: 'all'
   });
   const onSubmit = (data) => console.log(data);
 
@@ -22,7 +23,7 @@ function App() {
 
   const incrementStep = async () => {
     const result = await methods.trigger(["name", "email", "phone"]);
-    console.log({ result });
+    console.log(methods.getValues());
     if (result) {
       setStep((prev) => prev + 1);
     }

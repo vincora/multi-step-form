@@ -6,7 +6,7 @@ import cn from "classnames";
 const Step1 = () => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, touchedFields },
   } = useFormContext();
   return (
     <ul className={style.list}>
@@ -19,7 +19,7 @@ const Step1 = () => {
           <input
             type="text"
             placeholder="e.g. Stephen King"
-            className={cn(style.input, {[style.input_error]: errors.name})}
+            className={cn(style.input, {[style.input_error]: touchedFields.name && errors.name})}
             {...register("name", { required: "This field is required" })}
           />
         </label>
@@ -33,7 +33,7 @@ const Step1 = () => {
           <input
             type="text"
             placeholder="e.g. stephenking@lorem.com"
-            className={cn(style.input, {[style.input_error]: errors.name})}
+            className={cn(style.input, {[style.input_error]: touchedFields.email && errors.email})}
             {...register("email", { required: "This field is required" })}
           />
         </label>
@@ -47,7 +47,7 @@ const Step1 = () => {
           <input
             type="text"
             placeholder="e.g. +1 234 567 890"
-            className={cn(style.input, {[style.input_error]: errors.name})}
+            className={cn(style.input, {[style.input_error]: touchedFields.phone && errors.phone})}
             {...register("phone", { required: "This field is required" })}
           />
         </label>
