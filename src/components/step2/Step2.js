@@ -1,7 +1,5 @@
 import style from "./Step2.module.scss";
-import arcadeIcon from "../../images/icon-arcade.svg";
-import advancedIcon from "../../images/icon-advanced.svg";
-import proIcon from "../../images/icon-pro.svg";
+
 import cn from "classnames";
 import { useFormContext, useWatch } from "react-hook-form";
 
@@ -40,20 +38,13 @@ const Plan = ({ icon, priceMonth, priceYear, value, name }) => {
   );
 };
 
-const plans = [
-  { icon: arcadeIcon, priceMonth: 9, priceYear: 90, value: "Arcade" },
-  { icon: advancedIcon, priceMonth: 12, priceYear: 120, value: "Advanced" },
-  { icon: proIcon, priceMonth: 15, priceYear: 150, value: "Pro" },
-];
-
 const Step2 = () => {
-  const { register } = useFormContext();
-
+  const { register, getValues } = useFormContext();
 
   return (
     <div>
       <ul className={style.plansList}>
-        {plans.map(({ icon, priceMonth, priceYear, value }) => {
+        {getValues('plans').map(({ icon, priceMonth, priceYear, value }) => {
           return (
             <li className={style.plan__wrapper} key={value}>
               <Plan
