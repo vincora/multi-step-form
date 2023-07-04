@@ -40,7 +40,7 @@ const Step1 = () => {
             type="text"
             placeholder="e.g. stephenking@lorem.com"
             className={cn(style.input, {
-              [style.input_error]: touchedFields.email && errors.email,
+              [style.input_error]: (touchedFields.email || isDirty.email) && errors.email,
             })}
             {...register("email", { required: "This field is required", pattern : {
               value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
@@ -59,7 +59,7 @@ const Step1 = () => {
             type="text"
             placeholder="e.g. +1 234 567 890"
             className={cn(style.input, {
-              [style.input_error]: touchedFields.phone && errors.phone || isDirty.phone && errors.phone,
+              [style.input_error]: (touchedFields.phone || isDirty.phone)  && errors.phone,
             })}
             {...register("phone", {
               required: "This field is required",
