@@ -13,7 +13,30 @@ function App() {
   const methods = useForm({
     defaultValues:{
       plan: "Arcade",
-      yearly: false 
+      yearly: false,
+      addons: {
+        online_service: {
+          isChecked: false,
+          price: {
+            month: 1,
+            year: 10
+          }
+        },
+        storage: {
+          isChecked: false,
+          price: {
+            month: 2,
+            year: 20
+          }
+        },
+        customizable_profile: {
+          isChecked: false,
+          price: {
+            month: 2,
+            year: 20
+          }
+        }
+      }
     },
     mode: 'all'
   });
