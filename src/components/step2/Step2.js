@@ -1,34 +1,50 @@
 import style from "./Step2.module.scss";
-
 import cn from "classnames";
 import { useFormContext, useWatch } from "react-hook-form";
+import arcadeIcon from "../../images/icon-arcade.svg";
+import advancedIcon from "../../images/icon-advanced.svg";
+import proIcon from "../../images/icon-pro.svg";
 
-const Plan = ({ icon, priceMonth, priceYear, value, name }) => {
+const plans = [
+  { plan: "Arcade", priceMonth: 9, priceYear: 90, icon: arcadeIcon },
+  {
+    plan: "Advanced",
+    priceMonth: 12,
+    priceYear: 120,
+    icon: advancedIcon,
+  },
+  { plan: "Pro", priceMonth: 15, priceYear: 150, icon: proIcon },
+];
+
+const Plan = ({ icon, priceMonth, priceYear, plan}) => {
   const { getValues, register, control } = useFormContext();
   useWatch({
     control,
-    name: [name, "yearly"]
+    name: ['selectedPlan.name', "selectedPlan.annualy"]
   });
-  const yearly = getValues('yearly');
 
   return (
     <label
       className={cn(style.plan, {
-        [style.plan_active]: getValues(name) === value,
+        [style.plan_active]: getValues('selectedPlan.name') === plan,
       })}
     >
-      <input {...register(name)} type="radio" name={name} value={value} />
+      <input
+        {...register('selectedPlan.name')}
+        type="radio"
+        value={plan}
+      />
       <div className={style.plan__img}>
-        <img src={icon} alt="" />
+        <img src={icon} alt={plan} />
       </div>
       <div className={style.plan__description}>
-        <div className={style.plan__title}>{value}</div>
+        <div className={style.plan__title}>{plan}</div>
         <div className={style.plan__price}>
-          {yearly ? `$${priceYear}/yr` : `$${priceMonth}/mo`}
+          {getValues("selectedPlan.annualy") ? `$${priceYear}/yr` : `$${priceMonth}/mo`}
         </div>
         <div
           className={cn(style.plan__discount, {
-            [style.plan__discount_visible]: yearly,
+            [style.plan__discount_visible]: getValues("selectedPlan.annualy"),
           })}
         >
           2 months free
@@ -39,20 +55,20 @@ const Plan = ({ icon, priceMonth, priceYear, value, name }) => {
 };
 
 const Step2 = () => {
-  const { register, getValues } = useFormContext();
+  const { register } = useFormContext();
 
   return (
     <div>
       <ul className={style.plansList}>
-        {getValues('plans').map(({ icon, priceMonth, priceYear, value }) => {
+        {plans.map(({ plan, priceMonth, priceYear, icon }) => {
           return (
-            <li className={style.plan__wrapper} key={value}>
+            <li className={style.plan__wrapper} key={plan}>
               <Plan
                 icon={icon}
                 priceMonth={priceMonth}
                 priceYear={priceYear}
-                value={value}
-                name="plan"
+                plan={plan}
+                registerName="selectedPlan.name"
               />
             </li>
           );
@@ -62,7 +78,7 @@ const Step2 = () => {
         <div>Monthly</div>
         <label className={style.term__switch}>
           <input
-            {...register("yearly")}
+            {...register("selectedPlan.annualy")}
             type="checkbox"
             className={style.term__checkbox}
           />

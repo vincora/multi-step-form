@@ -1,4 +1,3 @@
-import { useState } from "react";
 import style from "./Step3.module.scss";
 import cn from "classnames";
 import checkmark from "../../images/checkmark.svg";
@@ -31,7 +30,7 @@ const Addon = ({ title, description, registerName }) => {
         </div>
       </div>
       <div className={style.addon__price}>
-        {getValues("yearly")
+        {getValues("selectedPlan.annualy")
           ? `+$${getValues(`${registerName}.price.year`)}/yr`
           : `+$${getValues(`${registerName}.price.month`)}/mo`}
       </div>
