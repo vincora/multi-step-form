@@ -8,16 +8,35 @@ import Step1 from "./components/step1/Step1";
 import Step2 from "./components/step2/Step2";
 import Step3 from "./components/step3/Step3";
 import Step4 from "./components/Step4/Step4";
+import arcadeIcon from "./images/icon-arcade.svg";
+import advancedIcon from "./images/icon-advanced.svg";
+import proIcon from "./images/icon-pro.svg";
 
 function App() {
   const methods = useForm({
     defaultValues: {
       selectedPlan: {
-        name: "Arcade",
+        name: "arcade",
         annualy: false,
+      },
+      plansPrices: {
+        arcade: {
+          month: 9,
+          year: 90,
+        },
+        advanced: {
+          month: 12,
+          year: 120,
+        },
+        pro: {
+          month: 15,
+          year: 150,
+        },
       },
       addons: {
         online_service: {
+          title: "Online service",
+          description: "Access to multiplayer games",
           isChecked: false,
           price: {
             month: 1,
@@ -25,6 +44,8 @@ function App() {
           },
         },
         storage: {
+          title: "Larger storage",
+          description: "Extra 1TB of cloud save",
           isChecked: false,
           price: {
             month: 2,
@@ -32,6 +53,8 @@ function App() {
           },
         },
         customizable_profile: {
+          title: "Customizable Profile",
+          description: "Custom theme on your profile",
           isChecked: false,
           price: {
             month: 2,
@@ -40,6 +63,16 @@ function App() {
         },
       },
     },
+    plans: [
+      { name: "arcade", priceMonth: 9, priceYear: 90, icon: arcadeIcon },
+      {
+        name: "advanced",
+        priceMonth: 12,
+        priceYear: 120,
+        icon: advancedIcon,
+      },
+      { name: "pro", priceMonth: 15, priceYear: 150, icon: proIcon },
+    ],
     mode: "all",
   });
   const onSubmit = (data) => console.log(data);

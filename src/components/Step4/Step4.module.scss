@@ -4,7 +4,13 @@
         border-radius: 0.5em;
         background-color: hsl(217, 100%, 97%);
     }
+    &__main{
+        display: flex;
+        justify-content: space-between;
+        font-weight: 500;
+    }
     &__plan{
+        text-transform: capitalize;
 
     }
     &__addons{

@@ -6,14 +6,14 @@ import advancedIcon from "../../images/icon-advanced.svg";
 import proIcon from "../../images/icon-pro.svg";
 
 const plans = [
-  { plan: "Arcade", priceMonth: 9, priceYear: 90, icon: arcadeIcon },
+  { plan: "arcade", priceMonth: 9, priceYear: 90, icon: arcadeIcon },
   {
-    plan: "Advanced",
+    plan: "advanced",
     priceMonth: 12,
     priceYear: 120,
     icon: advancedIcon,
   },
-  { plan: "Pro", priceMonth: 15, priceYear: 150, icon: proIcon },
+  { plan: "pro", priceMonth: 15, priceYear: 150, icon: proIcon },
 ];
 
 const Plan = ({ icon, priceMonth, priceYear, plan}) => {
@@ -68,7 +68,6 @@ const Step2 = () => {
                 priceMonth={priceMonth}
                 priceYear={priceYear}
                 plan={plan}
-                registerName="selectedPlan.name"
               />
             </li>
           );

@@ -25,8 +25,8 @@ const Addon = ({ title, description, registerName }) => {
           <img src={checkmark} alt={title} />
         </div>
         <div>
-          <div className={style.addon__title}>{title}</div>
-          <div className={style.addon__description}>{description}</div>
+          <div className={style.addon__title}>{getValues(`${registerName}.title`)}</div>
+          <div className={style.addon__description}>{getValues(`${registerName}.description`)}</div>
         </div>
       </div>
       <div className={style.addon__price}>
@@ -43,22 +43,16 @@ const Step3 = () => {
     <ul className={style.list}>
       <li className={style.list__item}>
         <Addon
-          title="Online service"
-          description="Access to multiplayer games"
           registerName="addons.online_service"
         />
       </li>
       <li className={style.list__item}>
         <Addon
-          title="Larger storage"
-          description="Extra 1TB of cloud save"
           registerName="addons.storage"
         />
       </li>
       <li className={style.list__item}>
         <Addon
-          title="Customizable Profile"
-          description="Custom theme on your profile"
           registerName="addons.customizable_profile"
         />
       </li>
