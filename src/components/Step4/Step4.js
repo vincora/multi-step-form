@@ -5,10 +5,15 @@ import { useFormContext } from "react-hook-form";
 const Step4 = () => {
   const { getValues } = useFormContext();
 
-  const currentPlan = getValues("selectedPlan.name");
-  const annualy = getValues("selectedPlan.annualy");
-  const addons = getValues("addons");
-  const addonsArray = Object.values(addons);
+  const values = getValues();
+  const currentPlan = values.selectedPlan.name;
+  const annualy = values.selectedPlan.annualy;
+  const addons = Object.values(values.addons).filter((item) => item.isChecked);
+  const totalPrice = annualy
+    ? values.plansPrices[currentPlan].year +
+      addons.reduce((a, b) => a.price.year + b.price.year)
+    : values.plansPrices[currentPlan].month +
+      addons.reduce((a, b) => a.price.month + b.price.month);
 
   return (
     <div className={style.checkout}>
@@ -17,33 +22,39 @@ const Step4 = () => {
           <div className={style.checkout__plan}>
             {`${currentPlan} (${annualy ? "Yearly" : "Monthly"})`}
           </div>
-          <div className={style.checkout__price}>
+          <div>
             {`$${
               annualy
-                ? getValues(`plansPrices.${currentPlan}.year`) + "/yr"
-                : getValues(`plansPrices.${currentPlan}.month`) + '/mo'
+                ? values.plansPrices[currentPlan].year + "/yr"
+                : values.plansPrices[currentPlan].month + "/mo"
             }`}
           </div>
         </div>
         <div className={style.checkout__addons}>
-          {addonsArray.map((addon) => {
-            if (addon.isChecked) {
+          <div className={style.addons}>
+            {addons.map((addon) => {
               return (
-                <div className="" key={addon.title}>
-                  <div>{addon.title}</div>
-                  <div className="">{`+$${
+                <div className={style.addons__item} key={addon.title}>
+                  <div className={style.addons__title}>{addon.title}</div>
+                  <div>{`+$${
                     annualy
                       ? addon.price.year + "/yr"
                       : addon.price.month + "/mo"
                   }`}</div>
                 </div>
               );
-            }
-            return undefined;
-          })}
+            })}
+          </div>
         </div>
       </div>
-      <div className={style.checkout__total}></div>
+      <div className={style.checkout__total}>
+        <div className={style.total}>
+          <div>Total (per {annualy ? "year" : "month"})</div>
+          <div className={style.total__price}>{`$${totalPrice}${
+            annualy ? "/yr" : "/mo"
+          }`}</div>
+        </div>
+      </div>
     </div>
   );
 };
