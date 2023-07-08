@@ -43,7 +43,7 @@ const Step1 = () => {
               [style.input_error]: (touchedFields.email || isDirty.email) && errors.email,
             })}
             {...register("email", { required: "This field is required", pattern : {
-              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
               message: 'Invalid email'
             } })}
           />
