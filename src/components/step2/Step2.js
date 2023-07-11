@@ -1,20 +1,6 @@
 import style from "./Step2.module.scss";
 import cn from "classnames";
 import { useFormContext, useWatch } from "react-hook-form";
-import arcadeIcon from "../../images/icon-arcade.svg";
-import advancedIcon from "../../images/icon-advanced.svg";
-import proIcon from "../../images/icon-pro.svg";
-
-const plans = [
-  { plan: "arcade", priceMonth: 9, priceYear: 90, icon: arcadeIcon },
-  {
-    plan: "advanced",
-    priceMonth: 12,
-    priceYear: 120,
-    icon: advancedIcon,
-  },
-  { plan: "pro", priceMonth: 15, priceYear: 150, icon: proIcon },
-];
 
 const Plan = ({ icon, priceMonth, priceYear, plan}) => {
   const { getValues, register, control } = useFormContext();
@@ -22,6 +8,8 @@ const Plan = ({ icon, priceMonth, priceYear, plan}) => {
     control,
     name: ['selectedPlan.name', "selectedPlan.annualy"]
   });
+  const annualy = getValues("selectedPlan.annualy");
+
 
   return (
     <label
@@ -40,11 +28,11 @@ const Plan = ({ icon, priceMonth, priceYear, plan}) => {
       <div className={style.plan__description}>
         <div className={style.plan__title}>{plan}</div>
         <div className={style.plan__price}>
-          {getValues("selectedPlan.annualy") ? `$${priceYear}/yr` : `$${priceMonth}/mo`}
+          {annualy ? `$${priceYear}/yr` : `$${priceMonth}/mo`}
         </div>
         <div
           className={cn(style.plan__discount, {
-            [style.plan__discount_visible]: getValues("selectedPlan.annualy"),
+            [style.plan__discount_visible]: annualy,
           })}
         >
           2 months free
@@ -55,19 +43,21 @@ const Plan = ({ icon, priceMonth, priceYear, plan}) => {
 };
 
 const Step2 = () => {
-  const { register } = useFormContext();
+  const { register, getValues } = useFormContext();
+  const values = getValues();
+  const plans = Object.values(values.plans);
 
   return (
     <div>
       <ul className={style.plansList}>
-        {plans.map(({ plan, priceMonth, priceYear, icon }) => {
+        {plans.map(({ name, price, icon }) => {
           return (
-            <li className={style.plan__wrapper} key={plan}>
+            <li className={style.plan__wrapper} key={name}>
               <Plan
                 icon={icon}
-                priceMonth={priceMonth}
-                priceYear={priceYear}
-                plan={plan}
+                priceMonth={price.month}
+                priceYear={price.year}
+                plan={name}
               />
             </li>
           );

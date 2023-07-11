@@ -10,10 +10,10 @@ const Step4 = () => {
   const annualy = values.selectedPlan.annualy;
   const addons = Object.values(values.addons).filter((item) => item.isChecked);
   const totalPrice = annualy
-    ? values.plansPrices[currentPlan].year +
-      addons.reduce((a, b) => a.price.year + b.price.year)
-    : values.plansPrices[currentPlan].month +
-      addons.reduce((a, b) => a.price.month + b.price.month);
+    ? values.plans[currentPlan].price.year +
+      addons.reduce((a, b) => a + b.price.year, 0)
+    : values.plans[currentPlan].price.month +
+      addons.reduce((a, b) => a + b.price.month, 0);
 
   return (
     <div className={style.checkout}>
@@ -25,8 +25,8 @@ const Step4 = () => {
           <div>
             {`$${
               annualy
-                ? values.plansPrices[currentPlan].year + "/yr"
-                : values.plansPrices[currentPlan].month + "/mo"
+                ? values.plans[currentPlan].price.year + "/yr"
+                : values.plans[currentPlan].price.month + "/mo"
             }`}
           </div>
         </div>

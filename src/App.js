@@ -19,18 +19,30 @@ function App() {
         name: "arcade",
         annualy: false,
       },
-      plansPrices: {
+      plans: {
         arcade: {
-          month: 9,
-          year: 90,
+          name: "arcade",
+          icon: arcadeIcon,
+          price: {
+            month: 9,
+            year: 90,
+          },
         },
         advanced: {
-          month: 12,
-          year: 120,
+          name: "advanced",
+          icon: advancedIcon,
+          price: {
+            month: 12,
+            year: 120,
+          },
         },
         pro: {
-          month: 15,
-          year: 150,
+          name: "pro",
+          icon: proIcon,
+          price: {
+            month: 15,
+            year: 150,
+          },
         },
       },
       addons: {
@@ -63,16 +75,6 @@ function App() {
         },
       },
     },
-    plans: [
-      { name: "arcade", priceMonth: 9, priceYear: 90, icon: arcadeIcon },
-      {
-        name: "advanced",
-        priceMonth: 12,
-        priceYear: 120,
-        icon: advancedIcon,
-      },
-      { name: "pro", priceMonth: 15, priceYear: 150, icon: proIcon },
-    ],
     mode: "all",
   });
   const onSubmit = (data) => console.log(data);
