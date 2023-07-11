@@ -3,8 +3,6 @@ import style from "./Buttons.module.scss";
 import cn from "classnames";
 
 const Buttons = ({ noBackBtn, confirm, incrementStep, decrementStep }) => {
-
-
   return (
     <div className={style.buttons}>
       <div>
@@ -14,19 +12,25 @@ const Buttons = ({ noBackBtn, confirm, incrementStep, decrementStep }) => {
           </button>
         )}
       </div>
-      {(!confirm && (
+      {!confirm && (
         <button
           className={cn(style.button, style.nextButton)}
           onClick={incrementStep}
         >
           Next Step
         </button>
-      )) ||
-        (confirm && (
-          <button className={cn(style.button, style.confirm)} type="submit" onClick={incrementStep}>Confirm</button>
-        ))}
+      )}
+      {confirm && (
+        <button
+          className={cn(style.button, style.confirm)}
+          type="submit"
+          onClick={incrementStep}
+        >
+          Confirm
+        </button>
+      )}
     </div>
   );
 };
-
+// TODO отдельные кнопки
 export default Buttons;
