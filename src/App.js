@@ -11,6 +11,7 @@ import Step4 from "./components/Step4/Step4";
 import arcadeIcon from "./images/icon-arcade.svg";
 import advancedIcon from "./images/icon-advanced.svg";
 import proIcon from "./images/icon-pro.svg";
+import Finish from "./components/finish/Finish";
 
 function App() {
   const methods = useForm({
@@ -181,6 +182,14 @@ function App() {
                       confirm
                     />
                   </div>
+                </div>
+              )}
+              {step === 5 && (
+                <div className={style.main}>
+                  <Finish
+                    title="Thank you!"
+                    description="Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com."
+                  />
                 </div>
               )}
             </form>

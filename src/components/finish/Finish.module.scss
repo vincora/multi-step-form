@@ -1,0 +1,27 @@
+.finish{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    &__body{
+        text-align: center;
+    }
+    &__title{
+        font-size: 32px;
+        font-weight: 700;
+        color: hsl(213, 96%, 18%);
+        padding-bottom: .25em;
+    }
+    &__description{
+        color: hsl(231, 11%, 63%);
+        line-height: 1.7;
+    }
+    &__icon{
+        width: 70px;
+        display: inline-block;
+        margin-bottom: 1em;
+        img{
+            width: 100%;
+        }
+    }
+}
