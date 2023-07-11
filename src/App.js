@@ -14,6 +14,8 @@ import proIcon from "./images/icon-pro.svg";
 import Finish from "./components/finish/Finish";
 
 function App() {
+
+  // TODO задать правила валидации централизованно (zod)
   const methods = useForm({
     defaultValues: {
       selectedPlan: {
@@ -47,7 +49,7 @@ function App() {
         },
       },
       addons: {
-        online_service: {
+        onlineService: {
           title: "Online service",
           description: "Access to multiplayer games",
           isChecked: false,
@@ -65,7 +67,7 @@ function App() {
             year: 20,
           },
         },
-        customizable_profile: {
+        customizableProfile: {
           title: "Customizable Profile",
           description: "Custom theme on your profile",
           isChecked: false,

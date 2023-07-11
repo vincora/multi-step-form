@@ -7,9 +7,9 @@ const Addon = ({ registerName }) => {
   const { register, getValues } = useFormContext();
   useWatch({
     name: [
-      "addons.online_service.isChecked",
+      "addons.onlineService.isChecked",
       "addons.storage.isChecked",
-      "addons.customizable_profile.isChecked",
+      "addons.customizableProfile.isChecked",
     ],
   });
   const addon = getValues(`${registerName}`);
@@ -42,13 +42,13 @@ const Step3 = () => {
   return (
     <ul className={style.list}>
       <li className={style.list__item}>
-        <Addon registerName="addons.online_service" />
+        <Addon registerName="addons.onlineService" />
       </li>
       <li className={style.list__item}>
         <Addon registerName="addons.storage" />
       </li>
       <li className={style.list__item}>
-        <Addon registerName="addons.customizable_profile" />
+        <Addon registerName="addons.customizableProfile" />
       </li>
     </ul>
   );
