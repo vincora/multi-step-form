@@ -6,7 +6,7 @@ import cn from "classnames";
 const Input = ({ label, placeholder, registerName, filterValue }) => {
   const {
     register,
-    formState: { errors, touchedFields },
+    formState: { errors },
   } = useFormContext();
 
   const { onChange, ...rest } = register(registerName);

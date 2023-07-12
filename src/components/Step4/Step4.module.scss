@@ -8,12 +8,21 @@
   &__main {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-weight: 500;
-    padding-bottom: 1.25em;
-    border-bottom: 1px solid hsl(229, 24%, 87%);
+    
+    &_border{
+      border-bottom: 1px solid hsl(229, 24%, 87%);
+      padding-bottom: 1.25em;
+    }
   }
   &__plan {
     text-transform: capitalize;
+  }
+  &__changeBtn{
+    color: hsl(231, 11%, 63%);
+    font-weight: 400;
+    padding-top: 0.25em;
   }
   &__addons{
     margin-top: 1.25em;

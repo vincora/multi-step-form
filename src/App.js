@@ -109,6 +109,9 @@ function App() {
   const decrementStep = () => {
     setStep((prev) => prev - 1);
   };
+  const backToSelectPlan = () => {
+    setStep(2)
+  };
 
   return (
     <div className={style.layoutWrapper}>
@@ -190,7 +193,7 @@ function App() {
                         description="Double-check everything looks OK before confirming."
                       />
                     </div>
-                    <Step4 />
+                    <Step4 backToSelectPlan={backToSelectPlan}/>
                   </div>
                   <div className={style.main__buttons}>
                     <Buttons
