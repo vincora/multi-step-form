@@ -32,5 +32,5 @@ const Buttons = ({ noBackBtn, confirm, incrementStep, decrementStep }) => {
     </div>
   );
 };
-// TODO отдельные кнопки
+
 export default Buttons;

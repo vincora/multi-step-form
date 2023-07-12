@@ -12,10 +12,24 @@ import arcadeIcon from "./images/icon-arcade.svg";
 import advancedIcon from "./images/icon-advanced.svg";
 import proIcon from "./images/icon-pro.svg";
 import Finish from "./components/finish/Finish";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z.object({
+  username: z.string().nonempty("Name is required").min(3, "3 symbols minimum"),
+  email: z
+    .string()
+    .nonempty("Email is required")
+    .email("Email format is not valid"),
+  phone: z
+    .string()
+    .nonempty("Phone number is required")
+    .refine((v) => v.replace(/[^\d]/g, "").length >= 10, {
+      message: "Phone number is invalid",
+    }),
+});
 
 function App() {
-
-  // TODO задать правила валидации централизованно (zod)
   const methods = useForm({
     defaultValues: {
       selectedPlan: {
@@ -79,6 +93,7 @@ function App() {
       },
     },
     mode: "all",
+    resolver: zodResolver(schema),
   });
   const onSubmit = (data) => console.log(data);
 
