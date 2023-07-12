@@ -9,26 +9,21 @@ const Step4 = () => {
   const currentPlan = values.selectedPlan.name;
   const annualy = values.selectedPlan.annualy;
   const addons = Object.values(values.addons).filter((item) => item.isChecked);
-  const totalPrice = annualy
-    ? values.plans[currentPlan].price.year +
-      addons.reduce((a, b) => a + b.price.year, 0)
-    : values.plans[currentPlan].price.month +
-      addons.reduce((a, b) => a + b.price.month, 0);
+  const term = annualy ? "year" : "month";
+  const termLabel = annualy ? "/yr" : "/mo";
+  const planTerm = annualy ? "Yearly" : "Monthly"
+  const totalPrice =
+    values.plans[currentPlan].price[term] +
+    addons.reduce((a, b) => a + b.price[term], 0);
 
   return (
     <div className={style.checkout}>
       <div className={style.checkout__body}>
         <div className={style.checkout__main}>
           <div className={style.checkout__plan}>
-            {`${currentPlan} (${annualy ? "Yearly" : "Monthly"})`}
+            {`${currentPlan} (${planTerm})`}
           </div>
-          <div>
-            {`$${
-              annualy
-                ? values.plans[currentPlan].price.year + "/yr"
-                : values.plans[currentPlan].price.month + "/mo"
-            }`}
-          </div>
+          <div>{`$${values.plans[currentPlan].price[term] + termLabel}`}</div>
         </div>
         <div className={style.checkout__addons}>
           <div className={style.addons}>
@@ -36,11 +31,7 @@ const Step4 = () => {
               return (
                 <div className={style.addons__item} key={addon.title}>
                   <div className={style.addons__title}>{addon.title}</div>
-                  <div>{`+$${
-                    annualy
-                      ? addon.price.year + "/yr"
-                      : addon.price.month + "/mo"
-                  }`}</div>
+                  <div>{`+$${addon.price[term] + termLabel}`}</div>
                 </div>
               );
             })}
@@ -49,10 +40,10 @@ const Step4 = () => {
       </div>
       <div className={style.checkout__total}>
         <div className={style.total}>
-          <div>Total (per {annualy ? "year" : "month"})</div>
-          <div className={style.total__price}>{`$${totalPrice}${
-            annualy ? "/yr" : "/mo"
-          }`}</div>
+          <div>Total (per {term})</div>
+          <div
+            className={style.total__price}
+          >{`$${totalPrice}${termLabel}`}</div>
         </div>
       </div>
     </div>
