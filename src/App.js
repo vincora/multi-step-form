@@ -1,6 +1,6 @@
 import style from "./App.module.scss";
 import { FormProvider, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Sidebar from "./components/sidebar/Sidebar";
 import Header from "./components/header/Header";
 import Buttons from "./components/buttons/Buttons";
@@ -8,6 +8,7 @@ import Step1 from "./components/step1/Step1";
 import Step2 from "./components/step2/Step2";
 import Step3 from "./components/step3/Step3";
 import Step4 from "./components/Step4/Step4";
+import Main from "./components/layout/Main";
 import arcadeIcon from "./images/icon-arcade.svg";
 import advancedIcon from "./images/icon-advanced.svg";
 import proIcon from "./images/icon-pro.svg";
@@ -99,19 +100,19 @@ function App() {
 
   const [step, setStep] = useState(1);
 
-  const incrementStep = async () => {
+  const incrementStep = useCallback(async () => {
     const result = await methods.trigger(["name", "email", "phone"]);
-    console.log(methods.getValues());
     if (result) {
       setStep((prev) => prev + 1);
     }
-  };
-  const decrementStep = () => {
+  }, [methods.trigger]);
+
+  const decrementStep = useCallback(() => {
     setStep((prev) => prev - 1);
-  };
-  const backToSelectPlan = () => {
-    setStep(2)
-  };
+  }, []);
+  const backToSelectPlan = useCallback(() => {
+    setStep(2);
+  }, []);
 
   return (
     <div className={style.layoutWrapper}>
@@ -127,82 +128,62 @@ function App() {
               className={style.layout__form}
             >
               {step === 1 && (
-                <div className={style.main}>
-                  <div className={style.main__content}>
-                    <div className={style.main__header}>
-                      <Header
-                        title="Personal info"
-                        description="Please provide your name, email address, and phone number."
-                      />
-                    </div>
-                    <Step1 />
-                  </div>
-                  <div className={style.main__buttons}>
+                <Main
+                  buttons={
                     <Buttons
                       noBackBtn
                       incrementStep={incrementStep}
                       decrementStep={decrementStep}
                     />
-                  </div>
-                </div>
+                  }
+                  title="Personal info"
+                  description="Please provide your name, email address, and phone number."
+                >
+                  <Step1 />
+                </Main>
               )}
               {step === 2 && (
-                <div className={style.main}>
-                  <div className={style.main__content}>
-                    <div className={style.main__header}>
-                      <Header
-                        title="Select your plan"
-                        description="You have the option of monthly or yearly billing."
-                      />
-                    </div>
-                    <Step2 />
-                  </div>
-                  <div className={style.main__buttons}>
+                <Main
+                  buttons={
                     <Buttons
                       incrementStep={incrementStep}
                       decrementStep={decrementStep}
                     />
-                  </div>
-                </div>
+                  }
+                  title="Select your plan"
+                  description="You have the option of monthly or yearly billing."
+                >
+                  <Step2 />
+                </Main>
               )}
               {step === 3 && (
-                <div className={style.main}>
-                  <div className={style.main__content}>
-                    <div className={style.main__header}>
-                      <Header
-                        title="Pick add-ons"
-                        description="Add-ons help enhance your gaming experience."
-                      />
-                    </div>
-                    <Step3 />
-                  </div>
-                  <div className={style.main__buttons}>
+                <Main
+                  buttons={
                     <Buttons
                       incrementStep={incrementStep}
                       decrementStep={decrementStep}
                     />
-                  </div>
-                </div>
+                  }
+                  title="Pick add-ons"
+                  description="Add-ons help enhance your gaming experience."
+                >
+                  <Step3 />
+                </Main>
               )}
               {step === 4 && (
-                <div className={style.main}>
-                  <div className={style.main__content}>
-                    <div className={style.main__header}>
-                      <Header
-                        title="Finishing up"
-                        description="Double-check everything looks OK before confirming."
-                      />
-                    </div>
-                    <Step4 backToSelectPlan={backToSelectPlan}/>
-                  </div>
-                  <div className={style.main__buttons}>
+                <Main
+                  buttons={
                     <Buttons
                       incrementStep={incrementStep}
                       decrementStep={decrementStep}
                       confirm
                     />
-                  </div>
-                </div>
+                  }
+                  title="Finishing up"
+                  description="Double-check everything looks OK before confirming."
+                >
+                  <Step4 backToSelectPlan={backToSelectPlan} />
+                </Main>
               )}
               {step === 5 && (
                 <div className={style.main}>
