@@ -24,7 +24,6 @@ const Buttons = ({ noBackBtn, confirm, incrementStep, decrementStep }) => {
         <button
           className={cn(style.button, style.confirm)}
           type="submit"
-          onClick={incrementStep}
         >
           Confirm
         </button>
