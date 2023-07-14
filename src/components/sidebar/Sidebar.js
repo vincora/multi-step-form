@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Sidebar.module.scss";
-import cn from "classnames";
+import { clsx } from 'clsx';
 
 const Sidebar = ({ step }) => {
   const titles = ["Your info", "Select plan", "Add-ons", "Summary"];
@@ -12,7 +12,7 @@ const Sidebar = ({ step }) => {
           return (
             <li className={style.item} key={item}>
               <div
-                className={cn(style.item__number, {
+                className={clsx(style.item__number, {
                   [style.item__number_active]: step === index + 1,
                 })}
               >

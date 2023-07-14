@@ -1,5 +1,5 @@
 import style from "./Step2.module.scss";
-import cn from "classnames";
+import { clsx } from 'clsx';
 import { useFormContext, useWatch } from "react-hook-form";
 
 const selectedPlan = 'selectedPlan.name';
@@ -15,7 +15,7 @@ const Plan = ({ icon, priceMonth, priceYear, plan}) => {
 
   return (
     <label
-      className={cn(style.plan, {
+      className={clsx(style.plan, {
         [style.plan_active]: getValues(selectedPlan) === plan,
       })}
     >
@@ -34,7 +34,7 @@ const Plan = ({ icon, priceMonth, priceYear, plan}) => {
 
         </div>
         <div
-          className={cn(style.plan__discount, {
+          className={clsx(style.plan__discount, {
             [style.plan__discount_visible]: annualy,
           })}
         >

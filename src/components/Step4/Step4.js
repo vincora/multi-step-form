@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Step4.module.scss";
 import { useFormContext } from "react-hook-form";
-import cn from "classnames"; // TODO replace wigh https://www.npmjs.com/package/clsx
+import { clsx } from 'clsx';
 
 const Step4 = ({ backToSelectPlan }) => {
   const { getValues } = useFormContext();
@@ -26,9 +26,7 @@ const Step4 = ({ backToSelectPlan }) => {
     <div className={style.checkout}>
       <div className={style.checkout__body}>
         <div
-          className={cn(style.checkout__main, {
-            [style.checkout__main_border]: addons.length,
-          })}
+          className={clsx(style.checkout__main, {[style.checkout__main_border]: addons.length})}
         >
           <div>
             <div

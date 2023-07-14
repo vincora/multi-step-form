@@ -1,7 +1,8 @@
 import style from "./Step3.module.scss";
-import cn from "classnames";
 import checkmark from "../../images/checkmark.svg";
 import { useFormContext, useWatch } from "react-hook-form";
+import { clsx } from 'clsx';
+
 
 const Addon = ({ registerName }) => {
   const { register, getValues } = useFormContext();
@@ -15,7 +16,7 @@ const Addon = ({ registerName }) => {
 
   return (
     <label
-      className={cn(style.addon, {
+      className={clsx(style.addon, {
         [style.addon_checked]: addon.isChecked,
       })}
     >

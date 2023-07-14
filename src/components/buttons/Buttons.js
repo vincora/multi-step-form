@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Buttons.module.scss";
-import cn from "classnames";
+import { clsx } from 'clsx';
 
 const Buttons = ({ noBackBtn, confirm, incrementStep, decrementStep }) => {
   return (
@@ -14,7 +14,7 @@ const Buttons = ({ noBackBtn, confirm, incrementStep, decrementStep }) => {
       </div>
       {!confirm && (
         <button
-          className={cn(style.button, style.nextButton)}
+          className={clsx(style.button, style.nextButton)}
           onClick={incrementStep}
         >
           Next Step
@@ -22,7 +22,7 @@ const Buttons = ({ noBackBtn, confirm, incrementStep, decrementStep }) => {
       )}
       {confirm && (
         <button
-          className={cn(style.button, style.confirm)}
+          className={clsx(style.button, style.confirm)}
           type="submit"
         >
           Confirm

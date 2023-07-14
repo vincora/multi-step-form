@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Step1.module.scss";
 import { useFormContext } from "react-hook-form";
-import cn from "classnames";
+import { clsx } from 'clsx';
 
 const Input = ({ label, placeholder, registerName, filterValue }) => {
   const {
@@ -29,7 +29,7 @@ const Input = ({ label, placeholder, registerName, filterValue }) => {
       <input
         type="text"
         placeholder={placeholder}
-        className={cn(style.input, {
+        className={clsx(style.input, {
           [style.input_error]: errors[registerName],
         })}
         {...rest}
