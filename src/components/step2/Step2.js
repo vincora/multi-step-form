@@ -2,23 +2,25 @@ import style from "./Step2.module.scss";
 import cn from "classnames";
 import { useFormContext, useWatch } from "react-hook-form";
 
+const selectedPlan = 'selectedPlan.name';
+const selectedTerm = 'selectedPlan.annualy';
+
 const Plan = ({ icon, priceMonth, priceYear, plan}) => {
   const { getValues, register, control } = useFormContext();
   useWatch({
     control,
-    name: ['selectedPlan.name', "selectedPlan.annualy"]
+    name: [selectedPlan, selectedTerm]
   });
-  const annualy = getValues("selectedPlan.annualy");
-
+  const annualy = getValues(selectedTerm);
 
   return (
     <label
       className={cn(style.plan, {
-        [style.plan_active]: getValues('selectedPlan.name') === plan,
+        [style.plan_active]: getValues(selectedPlan) === plan,
       })}
     >
       <input
-        {...register('selectedPlan.name')}
+        {...register(selectedPlan)}
         type="radio"
         value={plan}
       />
@@ -28,7 +30,8 @@ const Plan = ({ icon, priceMonth, priceYear, plan}) => {
       <div className={style.plan__description}>
         <div className={style.plan__title}>{plan}</div>
         <div className={style.plan__price}>
-          {annualy ? `$${priceYear}/yr` : `$${priceMonth}/mo`}
+          {`$${annualy ? priceYear + "/yr" : priceMonth + "/mo"}`}
+
         </div>
         <div
           className={cn(style.plan__discount, {
@@ -67,7 +70,7 @@ const Step2 = () => {
         <div>Monthly</div>
         <label className={style.term__switch}>
           <input
-            {...register("selectedPlan.annualy")}
+            {...register(selectedTerm)}
             type="checkbox"
             className={style.term__checkbox}
           />
