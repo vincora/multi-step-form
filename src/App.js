@@ -2,7 +2,6 @@ import style from "./App.module.scss";
 import { FormProvider, useForm } from "react-hook-form";
 import { useState, useCallback } from "react";
 import Sidebar from "./components/sidebar/Sidebar";
-import Header from "./components/header/Header";
 import Buttons from "./components/buttons/Buttons";
 import Step1 from "./components/step1/Step1";
 import Step2 from "./components/step2/Step2";
@@ -96,7 +95,9 @@ function App() {
     mode: "all",
     resolver: zodResolver(schema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    setStep(5);
+    console.log(data)};
 
   const [step, setStep] = useState(1);
 
@@ -105,7 +106,7 @@ function App() {
     if (result) {
       setStep((prev) => prev + 1);
     }
-  }, [methods.trigger]);
+  }, [methods]);
 
   const decrementStep = useCallback(() => {
     setStep((prev) => prev - 1);
