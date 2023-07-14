@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Step4.module.scss";
 import { useFormContext } from "react-hook-form";
-import cn from "classnames";
+import cn from "classnames"; // TODO replace wigh https://www.npmjs.com/package/clsx
 
 const Step4 = ({ backToSelectPlan }) => {
   const { getValues } = useFormContext();
@@ -11,15 +11,17 @@ const Step4 = ({ backToSelectPlan }) => {
   const annualy = values.selectedPlan.annualy;
   const addons = Object.values(values.addons).filter((item) => item.isChecked);
   const term = annualy ? "year" : "month";
-  const termLabel = annualy ? "/yr" : "/mo";
+  const termLabel = "/" + (annualy ? "yr" : "mo");
   const planTerm = annualy ? "Yearly" : "Monthly";
   const totalPrice =
     values.plans[currentPlan].price[term] +
     addons.reduce((a, b) => a + b.price[term], 0);
+
   const handleChange = (e) => {
-    backToSelectPlan();
     e.preventDefault();
+    backToSelectPlan();
   };
+  
   return (
     <div className={style.checkout}>
       <div className={style.checkout__body}>
@@ -31,7 +33,7 @@ const Step4 = ({ backToSelectPlan }) => {
           <div>
             <div
               className={style.checkout__plan}
-            >{`${currentPlan} (${planTerm})`}</div>
+            >{currentPlan}({planTerm})</div>
             <a
               href="/"
               className={style.checkout__changeBtn}
@@ -47,9 +49,9 @@ const Step4 = ({ backToSelectPlan }) => {
             <div className={style.addons}>
               {addons.map((addon) => {
                 return (
-                  <div className={style.addons__item} key={addon.title}>
+                  <div key={addon.title} className={style.addons__item} > 
                     <div className={style.addons__title}>{addon.title}</div>
-                    <div>{`+$${addon.price[term] + termLabel}`}</div>
+                    <div>${addon.price[term]}{termLabel}</div>
                   </div>
                 );
               })}
@@ -62,7 +64,7 @@ const Step4 = ({ backToSelectPlan }) => {
           <div>Total (per {term})</div>
           <div
             className={style.total__price}
-          >{`$${totalPrice}${termLabel}`}</div>
+          >${totalPrice}{termLabel}</div>
         </div>
       </div>
     </div>
