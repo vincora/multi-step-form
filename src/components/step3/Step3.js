@@ -1,5 +1,5 @@
 import style from "./Step3.module.scss";
-import checkmark from "../../images/checkmark.svg";
+import checkmark from "./images/icon-checkmark.svg";
 import { useFormContext, useWatch } from "react-hook-form";
 import { clsx } from 'clsx';
 
