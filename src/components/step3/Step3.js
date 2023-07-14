@@ -7,9 +7,7 @@ const Addon = ({ registerName }) => {
   const { register, getValues } = useFormContext();
   useWatch({
     name: [
-      "addons.onlineService.isChecked",
-      "addons.storage.isChecked",
-      "addons.customizableProfile.isChecked",
+      registerName
     ],
   });
   const addon = getValues(`${registerName}`);
