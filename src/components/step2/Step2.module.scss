@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 .plansList {
   display: flex;
   justify-content: space-between;
@@ -68,17 +68,21 @@
   justify-content: center;
   align-items: center;
   gap: 1em;
-  color: hsl(213, 96%, 18%);
-  font-weight: 500;
-  font-size: 1em;
 
+  &__label {
+    color: hsl(231, 11%, 63%);
+    font-weight: 500;
+    font-size: 1em;
+    &_active{
+      color: hsl(213, 96%, 18%);
+    }
+  }
   &__switch {
     position: relative;
     display: inline-block;
     width: 48px;
     height: 24px;
   }
-
   &__checkbox {
     display: none;
   }
@@ -111,10 +115,10 @@
   }
 }
 @media (max-width: $mobile-breakpoint) {
-  .plansList{
+  .plansList {
     flex-direction: column;
   }
-  .plan{
+  .plan {
     flex-direction: row;
     justify-content: flex-start;
 

@@ -28,6 +28,7 @@
 }
 @media (max-width: $mobile-breakpoint) {
     .finish{
+        padding: 3em .25em;
         &__icon{
             width: 55px;
         }

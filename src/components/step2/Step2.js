@@ -47,8 +47,12 @@ const Plan = ({ icon, priceMonth, priceYear, plan}) => {
 
 const Step2 = () => {
   const { register, getValues } = useFormContext();
+  useWatch({
+    name: [selectedTerm]
+  });
   const values = getValues();
   const plans = Object.values(values.plans);
+  const annualy = getValues(selectedTerm);
 
   return (
     <div>
@@ -67,7 +71,7 @@ const Step2 = () => {
         })}
       </ul>
       <div className={style.term}>
-        <div>Monthly</div>
+        <div className={clsx(style.term__label, {[style.term__label_active]: !annualy})}>Monthly</div>
         <label className={style.term__switch}>
           <input
             {...register(selectedTerm)}
@@ -76,7 +80,7 @@ const Step2 = () => {
           />
           <span className={style.term__slider}></span>
         </label>
-        <div>Yearly</div>
+        <div className={clsx(style.term__label, {[style.term__label_active]: annualy})}>Yearly</div>
       </div>
     </div>
   );
