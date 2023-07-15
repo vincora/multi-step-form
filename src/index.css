@@ -10,9 +10,7 @@ body {
   font-family: "Ubuntu", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @media (max-width: 550px) {
-    padding-bottom: 82.5px;
-  }
+
 }
 
 code {
@@ -24,4 +22,9 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+@media (max-width: 550px) {
+  body{
+    padding-bottom: 50px;
+  }
 }

@@ -122,7 +122,7 @@ function App() {
           <Sidebar step={step} />
         </div>
         <main className={style.layout__main}>
-          <h1 hidden>Multi step form</h1>
+          
           <FormProvider {...methods}>
             <form
               onSubmit={methods.handleSubmit(onSubmit)}
