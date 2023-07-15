@@ -36,8 +36,7 @@ Users should be able to:
 
 ### Built with
 
-- Flexbox
-- CSS Grid
+- Flexbox, Grid
 - [React](https://reactjs.org/) - JS library
 - [SCSS modules](https://github.com/css-modules/css-modules) - For styles
 - [React-hook-form](https://react-hook-form.com/) - library for working with forms
