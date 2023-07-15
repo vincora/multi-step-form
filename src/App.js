@@ -99,7 +99,7 @@ function App() {
     setStep(5);
     console.log(data)};
 
-  const [step, setStep] = useState(5);
+  const [step, setStep] = useState(1);
 
   const incrementStep = useCallback(async () => {
     const result = await methods.trigger(["name", "email", "phone"]);
