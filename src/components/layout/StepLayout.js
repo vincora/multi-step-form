@@ -1,8 +1,8 @@
 import React from "react";
-import style from "./Main.module.scss";
+import style from "./StepLayout.module.scss";
 import Header from "../header/Header";
 
-const Main = ({ children, buttons, title, description }) => {
+const StepLayout = ({ children, buttons, title, description }) => {
   return (
     <div className={style.main}>
       <div className={style.main__content}>
@@ -21,4 +21,4 @@ const Main = ({ children, buttons, title, description }) => {
   );
 };
 
-export default Main;
+export default StepLayout;

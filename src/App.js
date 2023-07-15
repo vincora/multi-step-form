@@ -7,7 +7,7 @@ import Step1 from "./components/step1/Step1";
 import Step2 from "./components/step2/Step2";
 import Step3 from "./components/step3/Step3";
 import Step4 from "./components/Step4/Step4";
-import Main from "./components/layout/Main";
+import StepLayout from "./components/layout/StepLayout";
 import arcadeIcon from "./images/icon-arcade.svg";
 import advancedIcon from "./images/icon-advanced.svg";
 import proIcon from "./images/icon-pro.svg";
@@ -116,7 +116,7 @@ function App() {
   }, []);
 
   return (
-    <div className={style.layoutWrapper}>
+    <div className={style.background}>
       <div className={style.layout}>
         <div className={style.layout__sidebar}>
           <Sidebar step={step} />
@@ -129,7 +129,7 @@ function App() {
               className={style.layout__form}
             >
               {step === 1 && (
-                <Main
+                <StepLayout
                   buttons={
                     <Buttons
                       noBackBtn
@@ -141,10 +141,10 @@ function App() {
                   description="Please provide your name, email address, and phone number."
                 >
                   <Step1 />
-                </Main>
+                </StepLayout>
               )}
               {step === 2 && (
-                <Main
+                <StepLayout
                   buttons={
                     <Buttons
                       incrementStep={incrementStep}
@@ -155,10 +155,10 @@ function App() {
                   description="You have the option of monthly or yearly billing."
                 >
                   <Step2 />
-                </Main>
+                </StepLayout>
               )}
               {step === 3 && (
-                <Main
+                <StepLayout
                   buttons={
                     <Buttons
                       incrementStep={incrementStep}
@@ -169,10 +169,10 @@ function App() {
                   description="Add-ons help enhance your gaming experience."
                 >
                   <Step3 />
-                </Main>
+                </StepLayout>
               )}
               {step === 4 && (
-                <Main
+                <StepLayout
                   buttons={
                     <Buttons
                       incrementStep={incrementStep}
@@ -184,7 +184,7 @@ function App() {
                   description="Double-check everything looks OK before confirming."
                 >
                   <Step4 backToSelectPlan={backToSelectPlan} />
-                </Main>
+                </StepLayout>
               )}
               {step === 5 && (
                 <div className={style.main}>

@@ -1,5 +1,5 @@
 
-.layoutWrapper{
+.background{
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -8,18 +8,22 @@
 }
 .layout{
     background-color: #fff;
-    border-radius: 1em;
+    border-radius: 10px;
     display: flex;
+    padding: 1em;
     max-width: 950px;
     width: 100%;
 
     &__sidebar{
-        width: 300px;
-        flex-shrink: 0;
+        max-width: 300px;
+        width:100%;
+        height: 36em;
     }
     &__main{
-        padding: 3em 6em 2em 6em;
+        padding: 2.5em 9% 1em 9%;
         width: 100%;
+        background-color: #fff;
+        border-radius: 10px;
     }
     &__form{
         height: 100%;
@@ -36,3 +40,32 @@
     }
 }
 
+@media (max-width: 375px) {
+
+    .background{
+        position: relative;
+    }
+
+    .layout{
+        display: block;
+        background-color: transparent;
+
+        &__sidebar{
+            width: 100%;
+            max-width: 100%;
+            height: 11em;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &__main{
+            padding: 1.65em;
+            width: auto;
+            position: absolute;
+            top: 6.25em;
+            left: 1em;
+            right: 1em;
+            z-index: 2;
+        }
+    }
+}

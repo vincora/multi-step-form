@@ -1,28 +1,28 @@
 .sidebar{
-    background-image: url('../../images/bg-sidebar-desktop.svg');
+    background-image: url('./images/bg-sidebar-desktop.svg');
     background-size: cover;
     border-radius: .5em;
-    height: 36em;
+    height: 100%;
     padding: 2em;
-    margin: 1em;
 }
 .item{
     display: flex;
     align-items: center;
-    gap: .8em;
+    gap: 1em;
     text-transform: uppercase;
     color: #fff;
     margin-bottom: 2em;
     &__number{
         border-radius: 50%;
         border: 1px solid #fff;
-        width: 1em;
-        height: 1em;
+        width: 1.5em;
+        height: 1.5em;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 1em;
         font-weight: 500;
+
         &_active{
             background-color: hsl(206, 94%, 87%);
             color: hsl(213, 96%, 18%);
@@ -31,11 +31,35 @@
     &__title{
         font-weight: 700;
         font-size: .85em;
-
     }
     &__subtitle{
         color:hsl(229, 24%, 87%);
         font-size: 0.75em;
         margin-bottom: .25em;
     }
+}
+@media (max-width: 375px) {
+    .sidebar{
+        background-image: url('./images/bg-sidebar-mobile.svg');
+        background-size: cover;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        &__items{
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+        }
+    }
+    .item{
+        margin-bottom: 0;
+        gap: 0;
+        &__title{
+            display: none;
+        }
+        &__subtitle{
+            display: none;
+        }
+    }
+
 }

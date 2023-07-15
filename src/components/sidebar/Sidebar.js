@@ -7,7 +7,7 @@ const Sidebar = ({ step }) => {
 
   return (
     <aside className={style.sidebar}>
-      <ul>
+      <ul className={style.sidebar__items}>
         {titles.map((item, index) => {
           return (
             <li className={style.item} key={item}>

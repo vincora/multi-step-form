@@ -12,9 +12,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 3em;
   cursor: pointer;
   input {
-    opacity: 0;
+    display: none;
   }
   &:hover {
     border-color: hsl(243, 100%, 62%);
@@ -34,7 +35,6 @@
     }
   }
   &__description {
-    padding-top: 3em;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -107,5 +107,16 @@
     -webkit-transform: translateX(21px);
     -ms-transform: translateX(21px);
     transform: translateX(21px);
+  }
+}
+@media (max-width: 375px) {
+  .plansList{
+    flex-direction: column;
+  }
+  .plan{
+    flex-direction: row;
+    justify-content: flex-start;
+
+    gap: 1em;
   }
 }

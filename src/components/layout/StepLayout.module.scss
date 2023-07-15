@@ -1,0 +1,16 @@
+.main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__header{
+        margin-bottom: 2em;
+    }
+}
+@media (max-width: 375px) {
+    .main{
+        &__header{
+            margin-bottom: 1.5em;
+        }
+    }
+}
