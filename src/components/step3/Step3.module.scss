@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 .list__item {
   & + & {
     margin-top: 1em;
@@ -68,7 +69,7 @@
     }
   }
 }
-@media (max-width: 375px) {
+@media (max-width: $mobile-breakpoint) {
   .addon{
     font-size: .9em;
     padding: 1em;

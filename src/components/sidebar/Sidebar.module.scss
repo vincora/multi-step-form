@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 .sidebar{
     background-image: url('./images/bg-sidebar-desktop.svg');
     background-size: cover;
@@ -38,7 +39,7 @@
         margin-bottom: .25em;
     }
 }
-@media (max-width: 375px) {
+@media (max-width: $mobile-breakpoint) {
     .sidebar{
         background-image: url('./images/bg-sidebar-mobile.svg');
         background-size: cover;

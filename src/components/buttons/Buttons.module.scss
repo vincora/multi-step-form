@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -34,7 +36,7 @@
   background-color: hsl(243, 100%, 62%);
 }
 
-@media (max-width: 375px) {
+@media (max-width: $mobile-breakpoint) {
   .buttons{
     position: fixed;
     bottom: 0;
